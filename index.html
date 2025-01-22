@@ -6,14 +6,45 @@
     <title>ציורים מותאמים אישית - הזמינו עכשיו</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<!-- Add this in the <head> section for loading indicators -->
+<style>
+    .loading {
+        position: relative;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    .loading::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #f3f3f3;
+        border-top: 2px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: translate(-50%, -50%);
+    }
+    @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .error-message {
+        color: #dc2626;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>
 </head>
 <body class="bg-purple-50">
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-4xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-purple-600">ציורים מאת אביה זיידמן]</div>
-                <div class="text-gray-600">סטודנטית לאומנות</div>
+                <div class="text-2xl font-bold text-purple-600">ציורים מאת אביה זיידמן</div>
+                <div class="text-gray-600">סטודנט לאומנות</div>
             </div>
         </div>
     </header>
@@ -111,7 +142,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="mb-2">כל הזכויות שמורות © 2025 ציורים מאת אביה זיידמן]</p>
+            <p class="mb-2">כל הזכויות שמורות © 2025 ציורים מאת אביה זיידמן</p>
             <p class="text-sm text-gray-400">ליצירת קשר: aviyah.cohen@gmail.com</p>
         </div>
     </footer>
