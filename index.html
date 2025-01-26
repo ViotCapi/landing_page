@@ -170,7 +170,9 @@
     <script>
         const handleForm = async (e) => {
             try {
-                await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
+                await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'), {
+                    content: canvas.toDataURL()
+                });
                 alert('email sent!');
             } catch (error) {
                 console.error(error);
