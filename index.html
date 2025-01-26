@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +7,46 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-<!-- Add this in the <head> section for loading indicators -->
-<style>
-    .loading {
-        position: relative;
-        opacity: 0.7;
-        pointer-events: none;
-    }
-    .loading::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #f3f3f3;
-        border-top: 2px solid #3498db;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        transform: translate(-50%, -50%);
-    }
-    @keyframes spin {
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-    .error-message {
-        color: #dc2626;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-    }
-</style>
+    <!-- Add this in the <head> section for loading indicators -->
+    <style>
+        .loading {
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
+
 <body class="bg-purple-50">
     <!-- Header -->
     <header class="bg-white shadow-sm">
@@ -66,17 +75,20 @@
         <h2 class="text-2xl font-bold text-center mb-8">סגנונות ציור זמינים</h2>
         <div class="grid md:grid-cols-3 gap-6">
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <img src="https://placeholder.com/300x200" alt="סגנון צבעי מים" class="w-full h-40 object-cover rounded mb-3">
+                <img src="https://placeholder.com/300x200" alt="סגנון צבעי מים"
+                    class="w-full h-40 object-cover rounded mb-3">
                 <h3 class="font-bold text-lg mb-2">צבעי מים</h3>
                 <p class="text-gray-600">צבעים רכים וזורמים עם תחושה חלומית</p>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <img src="https://placeholder.com/300x200" alt="סגנון שמן" class="w-full h-40 object-cover rounded mb-3">
+                <img src="https://placeholder.com/300x200" alt="סגנון שמן"
+                    class="w-full h-40 object-cover rounded mb-3">
                 <h3 class="font-bold text-lg mb-2">ציור שמן</h3>
                 <p class="text-gray-600">צבעים עשירים וחיים עם מרקם</p>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <img src="https://placeholder.com/300x200" alt="סגנון רישום" class="w-full h-40 object-cover rounded mb-3">
+                <img src="https://placeholder.com/300x200" alt="סגנון רישום"
+                    class="w-full h-40 object-cover rounded mb-3">
                 <h3 class="font-bold text-lg mb-2">רישום עיפרון</h3>
                 <p class="text-gray-600">רישומים מפורטים בשחור-לבן</p>
             </div>
@@ -87,7 +99,8 @@
     <div class="max-w-2xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-6">
             <h2 class="text-2xl font-bold mb-6 text-center">טופס הזמנת ציור</h2>
-            <form onSubmit="handleForm()" id="contact-form" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form onSubmit="handleForm()" id="contact-form" method="POST" enctype="multipart/form-data"
+                class="space-y-6">
                 <!-- Name Input -->
                 <div>
                     <label for="name" class="block text-gray-700 mb-2">שם מלא</label>
@@ -149,21 +162,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-      (function () {
-        emailjs.init('n-W8t6sT2ZtLjIbIy');
-        console.log('inited');
-      })();
+        (function () {
+            emailjs.init('n-W8t6sT2ZtLjIbIy');
+            console.log('inited');
+        })();
     </script>
     <script>
-      const handleForm = async (e) => {
-        try {
-          await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
-          alert('email sent!');
-        } catch (error) {
-          console.error(error);
-          alert('Failed to send email');
-        }
-      };
+        const handleForm = async (e) => {
+            try {
+                await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
+                alert('email sent!');
+            } catch (error) {
+                console.error(error);
+                alert('Failed to send email');
+            }
+        };
     </script>
 </body>
+
 </html>
