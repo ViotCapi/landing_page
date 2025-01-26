@@ -39,22 +39,70 @@
 </style>
 </head>
 <body class="bg-purple-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-purple-600">ציורים מאת אביה זיידמן</div>
+                <div class="text-gray-600">סטודנט לאומנות</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="py-12 bg-gradient-to-r from-purple-500 to-pink-500">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                הפכו את התמונות שלכם לציורים מדהימים
+            </h1>
+            <p class="text-xl text-white opacity-90">
+                היי חברים! הזמינו ציור מותאם אישית מהתמונות שלכם
+            </p>
+        </div>
+    </div>
+
+    <!-- Art Styles Section -->
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-center mb-8">סגנונות ציור זמינים</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="https://placeholder.com/300x200" alt="סגנון צבעי מים" class="w-full h-40 object-cover rounded mb-3">
+                <h3 class="font-bold text-lg mb-2">צבעי מים</h3>
+                <p class="text-gray-600">צבעים רכים וזורמים עם תחושה חלומית</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="https://placeholder.com/300x200" alt="סגנון שמן" class="w-full h-40 object-cover rounded mb-3">
+                <h3 class="font-bold text-lg mb-2">ציור שמן</h3>
+                <p class="text-gray-600">צבעים עשירים וחיים עם מרקם</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="https://placeholder.com/300x200" alt="סגנון רישום" class="w-full h-40 object-cover rounded mb-3">
+                <h3 class="font-bold text-lg mb-2">רישום עיפרון</h3>
+                <p class="text-gray-600">רישומים מפורטים בשחור-לבן</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commission Form -->
     <div class="max-w-2xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-6">
             <h2 class="text-2xl font-bold mb-6 text-center">טופס הזמנת ציור</h2>
-            <form action="https://formsubmit.co/aviyah.cohen@gmail.com" method="POST" enctype="multipart/form-data" id="arclass="space-y-6">
+            <form onSubmit="handleForm()" id="contact-form" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <!-- Name Input -->
                 <div>
                     <label for="name" class="block text-gray-700 mb-2">שם מלא</label>
                     <input type="text" id="name" name="name" required
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500">
                 </div>
 
+                <!-- Email Input -->
                 <div>
                     <label for="email" class="block text-gray-700 mb-2">כתובת אימייל</label>
                     <input type="email" id="email" name="email" required
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500">
                 </div>
 
+                <!-- Photo Upload -->
                 <div>
                     <label for="photo" class="block text-gray-700 mb-2">העלאת תמונה</label>
                     <input type="file" id="photo" name="photo" accept="image/*" required
@@ -62,6 +110,7 @@
                     <p class="text-sm text-gray-500 mt-1">גודל מקסימלי: 5MB</p>
                 </div>
 
+                <!-- Style Selection -->
                 <div>
                     <label for="style" class="block text-gray-700 mb-2">בחירת סגנון ציור</label>
                     <select id="style" name="style" required
@@ -73,70 +122,48 @@
                     </select>
                 </div>
 
+                <!-- Additional Notes -->
                 <div>
-                    <label for="notes" class="block text-gray-700 mb-2">הערות נוספות</label>
+                    <label for="notes" class="block text-gray-700 mb-2">הערות נוספות (לא חובה)</label>
                     <textarea id="notes" name="notes" rows="4"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500"></textarea>
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500"
+                        placeholder="בקשות מיוחדות או פרטים נוספים?"></textarea>
                 </div>
 
+                <!-- Submit Button -->
                 <button type="submit"
                     class="w-full bg-purple-600 text-white py-3 rounded-lg font-bold hover:bg-purple-700 transition duration-300">
-                    שליחת טופס
+                    שליחת בקשה לציור
                 </button>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-2">כל הזכויות שמורות © 2025 ציורים מאת אביה זיידמן</p>
+            <p class="text-sm text-gray-400">ליצירת קשר: aviyah.cohen@gmail.com</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        document.getElementById('artForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const file = document.getElementById('photo').files[0];
-
-            // File size validation
-            if (file.size > 5 * 1024 * 1024) { // 5MB
-                alert('הקובץ גדול מדי. הגודל המקסימלי הוא 5MB');
-                return;
-            }
-
-            // Convert image to base64
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-
-            reader.onload = function() {
-                const emailBody = `
-                    שם: ${formData.get('name')}
-                    אימייל: ${formData.get('email')}
-                    סגנון: ${formData.get('style')}
-                    הערות: ${formData.get('notes')}
-
-                    התמונה מצורפת כקובץ base64.
-                `;
-
-                // Using EmailJS service
-                Email.send({
-                    SecureToken: "n-W8t6sT2ZtLjIbIy", // Replace with your token
-                    To: 'aviyah.cohen@gmail.com', // Replace with your email
-                    From: formData.get('email'),
-                    Subject: `בקשה חדשה לציור מ-${formData.get('name')}`,
-                    Body: emailBody,
-                    Attachments: [{
-                        name: file.name,
-                        data: reader.result
-                    }]
-                }).then(
-                    message => {
-                        if(message === "OK") {
-                            alert('הטופס נשלח בהצלחה!');
-                            document.getElementById('artForm').reset();
-                        } else {
-                            alert('אירעה שגיאה בשליחת הטופס. נא לנסות שוב.');
-                        }
-                    }
-                );
-            };
-        });
+      (function () {
+        emailjs.init('n-W8t6sT2ZtLjIbIy');
+        console.log('inited');
+      })();
+    </script>
+    <script>
+      const handleForm = async (e) => {
+        try {
+          await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
+          alert('email sent!');
+        } catch (error) {
+          console.error(error);
+          alert('Failed to send email');
+        }
+      };
     </script>
 </body>
 </html>
