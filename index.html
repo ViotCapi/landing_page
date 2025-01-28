@@ -171,10 +171,10 @@
         const handleForm = async (e) => {
             try {
                 await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
-                alert('email sent!');
+                console.log('email sent!');
             } catch (error) {
                 console.error(error);
-                alert('Failed to send email');
+                console.log('Failed to send email');
             }
         };
     </script>
