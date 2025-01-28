@@ -99,6 +99,7 @@
     <div class="max-w-2xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-6">
             <h2 class="text-2xl font-bold mb-6 text-center">טופס הזמנת ציור</h2>
+
             <form onSubmit="handleForm()" id="contact-form" method="POST" enctype="multipart/form-data"
                 class="space-y-6" netlify data-netlify="true">
                 <!-- Name Input -->
@@ -168,15 +169,23 @@
         })();
     </script>
     <script>
-        const handleForm = async (e) => {
-            try {
-                await emailjs.sendForm('service_qz6xzxh3x', 'template_s6llx9hxxl', document.getElementById('contact-form'));
-                console.log('email sent!');
-            } catch (error) {
-                console.error(error);
-                console.log('Failed to send email');
-            }
-        };
+
+        function handleForm(event) {
+            event.preventDefault();
+            var base64 = canvas.toDataURL();
+                        
+            const handleForm = async (e) => {
+                try {
+                    await emailjs.sendForm('n-W8t6sT2ZtLjIbIy', 'template_vu3qzdj', document.getElementById('contact-form'), {
+                    content: base64
+                });
+                    console.log('email sent!');
+                } catch (error) {
+                    console.error(error);
+                    console.log('Failed to send email');
+                }
+            };
+        }
     </script>
 </body>
 
